@@ -97,7 +97,11 @@ class XmlToCsv:
         # 解析 utf-8 檔案的 xml 內容
         tmp_data_list = self.xml_to_tmp_data(tmp_utf_file)
         # 寫出資料
-        self.data_write_file(tmp_data_list, dlmtr="\x06")
+        self.data_to_file(tmp_data_list, dlmtr="\x06")
+        try:
+            os.remove(self.tmp_utf_file)
+        except Exception as e:
+            print(e)
 
 if __name__ == "__main__":
     srcfile = input("請輸出檔案名稱")
